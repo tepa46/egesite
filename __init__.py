@@ -3,6 +3,7 @@ from flask import render_template
 from flask import redirect
 from flask import request
 
+import os
 import json
 
 import ChoiceProblem
@@ -81,4 +82,5 @@ if __name__ == '__main__':
         print('Have read similar_tasks.json')
 
     choice_problem = ChoiceProblem.ChoiceProblem(ege_data, similar_tasks)
-    app.run(port=8080, host='127.0.0.1')
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
